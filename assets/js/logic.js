@@ -37,4 +37,26 @@ $(document).ready(function () {
 
 	});
 
+	database.ref().on("child_added", function (childSnapshot) {
+		console.log(childSnapshot.val().name);
+		console.log(childSnapshot.val().role);
+		console.log(childSnapshot.val().startDate);
+		console.log(childSnapshot.val().monthly);
+		var employeeTable = $("#employee-table");
+		var tableRow = $("<tr>");
+		var cellArray = [childSnapshot.val().name, childSnapshot.val().role, childSnapshot.val().startDate, "a Number", childSnapshot.val().monthly, "A Sum of Money"];
+		console.log(cellArray);
+
+		for (var i = 0; i < cellArray.length; i++) {
+			var tableCell = $("<td>");
+			tableCell.append(cellArray[i]);
+			tableRow.append(tableCell)
+			employeeTable.append(tableRow)
+
+
+
+
+
+		};
+	});
 });
