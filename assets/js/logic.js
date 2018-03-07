@@ -11,8 +11,11 @@ $(document).ready(function () {
 	};
 	firebase.initializeApp(config);
 
-	var database = firebase.databse()
-
+	var database = firebase.database()
+	var name = "";
+	var role = "";
+	var startDate = "";
+	var payRate = 0;
 
 	$("#add-employee-btn").on("click", function (event) {
 		event.preventDefault();
@@ -29,6 +32,7 @@ $(document).ready(function () {
 			role: role,
 			startDate: startDate,
 			monthly: payRate,
+			dateAdded: firebase.database.ServerValue.TIMESTAMP
 		});
 
 	});
